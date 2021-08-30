@@ -36,6 +36,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /*Role based authentication . If ROLE -> Normal then only READ
+   IF ROLE -> Authority then READ
+   IF ROLE -> ADMIN then read, write, update
+
+     */
+
     // Creating a bean for password encoder. Creating a bean of encoder so that it can be used/ injected using autowired
     @Bean
     BCryptPasswordEncoder bCryptPasswordEncoder() {
