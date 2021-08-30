@@ -1,5 +1,8 @@
 package com.pks.security.Config;
 
+import com.pks.security.Model.CustomerDetailService;
+import com.pks.security.Service.CustomUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,12 +11,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    CustomUserDetailService customerDetailService;
 
     //basic authentication
     @Override
@@ -32,7 +39,9 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         IF ROLE -> Authority then READ
         IF ROLE -> ADMIN then read, write, update */
 
-        http.authorizeRequests()
+        http
+               // .csrf().disable()
+                .authorizeRequests()
                 //.antMatchers("/home","/reg").permitAll() - Way of adding multiple URLs
                 .antMatchers("/public/**").hasRole("NORMAL")
                 .antMatchers("/user/**").hasRole("ADMIN")
@@ -40,16 +49,35 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic();
+
+        // form based authentication
+       /* http
+                // .csrf().disable()
+                .authorizeRequests()
+                //.antMatchers("/home","/reg").permitAll() - Way of adding multiple URLs
+                .antMatchers("/signIn").permitAll()
+                .antMatchers("/public/**").hasRole("NORMAL")
+                .antMatchers("/user/**").hasRole("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/signIn")
+                .loginProcessingUrl("/dologin")
+                .defaultSuccessUrl("/user/"); */
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+        /* In memory check
         auth.inMemoryAuthentication().withUser("normal").password(this.bCryptPasswordEncoder()
                 .encode("normal")).roles("NORMAL");
 
         auth.inMemoryAuthentication().withUser("admin").password(this.bCryptPasswordEncoder()
                 .encode("admin")).roles("ADMIN");
+                */
+        auth.userDetailsService(customerDetailService).passwordEncoder( bCryptPasswordEncoder());
+
 
     }
 

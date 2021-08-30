@@ -15,4 +15,9 @@ public class OtherControler {
         return "This Is Reg";
     }
 
+    @GetMapping("/signIn")
+    public String signIn() {
+        return "templates/login.html";
+    }
+
 }

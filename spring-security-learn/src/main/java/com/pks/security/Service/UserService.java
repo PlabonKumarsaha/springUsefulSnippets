@@ -12,8 +12,8 @@ public class UserService {
     List<User>list = new ArrayList<>();
 
     public UserService(){
-        list.add(new User("abc","abc","abc@gmail.com"));
-        list.add(new User("xyz","xyz","xyz@gmail.com"));
+        list.add(new User("abc","abc","abc@gmail.com","ROLE_ADMIN"));
+        list.add(new User("xyz","xyz","xyz@gmail.com","ROLE_USER"));
     }
     public List<User>getAllUser() {
         return this.list;
