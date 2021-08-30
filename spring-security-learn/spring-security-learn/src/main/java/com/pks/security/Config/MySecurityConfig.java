@@ -17,6 +17,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                //.antMatchers("/home","/reg").permitAll() - Way of adding multiple URLs
+                .antMatchers("public/**").permitAll() // way of adding on one common group
                 .anyRequest()
                 .authenticated()
                 .and()

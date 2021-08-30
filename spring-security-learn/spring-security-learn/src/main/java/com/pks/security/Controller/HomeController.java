@@ -6,11 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/public")
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String getHome() {
         return "This Is Home";
+    }
+
+    @GetMapping("/login")
+    public String getLogin() {
+        return "This Is login";
+    }
+
+    @GetMapping("/reg")
+    public String getReg() {
+        return "This Is Reg";
     }
 }
