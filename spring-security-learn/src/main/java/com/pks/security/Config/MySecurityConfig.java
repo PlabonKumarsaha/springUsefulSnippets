@@ -16,9 +16,24 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     //basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+       /* Basic Authentication
         http.authorizeRequests()
                 //.antMatchers("/home","/reg").permitAll() - Way of adding multiple URLs
                 .antMatchers("public/**").permitAll() // way of adding on one common group
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic(); */
+
+        /* This is role base authentication
+        Role based authentication . If ROLE -> Normal then only READ
+        IF ROLE -> Authority then READ
+        IF ROLE -> ADMIN then read, write, update */
+
+        http.authorizeRequests()
+                //.antMatchers("/home","/reg").permitAll() - Way of adding multiple URLs
+                .antMatchers("/public/**").hasRole("NORMAL")
+                .antMatchers("/user/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -28,19 +43,13 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication().withUser("xyz").password(this.bCryptPasswordEncoder()
-                .encode("xyz")).roles("NORMAL");
+        auth.inMemoryAuthentication().withUser("normal").password(this.bCryptPasswordEncoder()
+                .encode("normal")).roles("NORMAL");
 
-        auth.inMemoryAuthentication().withUser("abc").password(this.bCryptPasswordEncoder()
-                .encode("abc")).roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password(this.bCryptPasswordEncoder()
+                .encode("admin")).roles("ADMIN");
 
     }
-
-    /*Role based authentication . If ROLE -> Normal then only READ
-   IF ROLE -> Authority then READ
-   IF ROLE -> ADMIN then read, write, update
-
-     */
 
     // Creating a bean for password encoder. Creating a bean of encoder so that it can be used/ injected using autowired
     @Bean
