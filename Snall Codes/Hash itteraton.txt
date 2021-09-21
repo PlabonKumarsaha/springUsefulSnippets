@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package practice;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+
+/**
+ *
+ * @author Mizanur
+ */
+public class Practice {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       
+     Map<String, String>map = new HashMap<>();
+     map.put("1", "One");
+     map.put("2", "Two");
+     map.put("3", "Three");
+     map.put("4", "Four");
+     map.put("5", "Five");
+     map.put("6", "Six");
+    System.out.println(map.size());
+    
+    // itterate in map
+    // There is no direct itterator in map
+    
+    //get a set of entities
+    Set set = map.entrySet();
+    
+    
+    //get an itterator
+    Iterator it = set.iterator();
+    
+    // display elements
+    
+    while(it.hasNext()) {
+        Map.Entry me = (Map.Entry) it.next();
+        System.out.println("key "+me.getKey());
+        System.out.println("value "+me.getValue());
+        
+    }
+    
+     
+     
+     
+        
+        
+
+    }
+    
+}
