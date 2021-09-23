@@ -1,0 +1,15 @@
+ Person person = new Person();
+        Constructor constructor[] = person.getClass().getConstructors();
+        // returns the number of constructor in the Person class
+        System.out.println(String.valueOf(constructor.length));
+
+
+       // Field field[] = person.getClass().getFields();
+        //String fieldName = person.getDeclared
+       // System.out.println(fieldName);
+
+        //System.out.println(String.valueOf(field[0]));
+
+        Method methods[] = person.getClass().getDeclaredMethods();
+        System.out.println(methods[0].toString());
+        System.out.println(methods[1].toString());
