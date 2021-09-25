@@ -4,4 +4,12 @@
 * spring-security-learn -> Basic Spring Securities
 * Consume a 3rd party API : https://spring.io/guides/gs/consuming-rest/
 * emp-deploy - deploying an app in tomcat
-* @RequestParam in Spring jpa (check on 23 rd spet)
+* Request Param
+```
+//http://localhost:8088/api/v1/empbyId/?id=1&name=plabon (link- Pass the values as params)
+    @GetMapping("empbyId")
+    Employee getDataByNameId(@RequestParam Integer id,@RequestParam String name){
+        Employee returnData = empRepository.findByNameANDId(id,name);
+        return returnData;
+    }
+```
