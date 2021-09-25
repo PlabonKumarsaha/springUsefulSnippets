@@ -13,3 +13,9 @@
         return returnData;
     }
 ```
+
+* Like parameter in JPQL
+```
+ @Query(value = "SELECT * FROM employee WHERE employee.id = :id AND employee.name LIKE %:name%",nativeQuery = true)
+    Employee findByNameANDId(int id, String name);
+```
