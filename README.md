@@ -41,3 +41,30 @@ private final static String INCREMENT_BALANCE_PROCEDURE = "PLABON.PRACTICE_PK.dp
         System.out.println("out code "+outputCode);
         return outputCode;
 ```
+### The procedure which was called
+```
+CREATE OR REPLACE PACKAGE BODY PLABON.PRACTICE_PK
+IS
+   out_message   VARCHAR2 (1024);
+   out_cuscod    VARCHAR2 (1024);
+   
+PROCEDURE dpr_increase_balance (
+      in_actnum      IN       VARCHAR2,
+      in_acttit      IN       VARCHAR2,
+      out_code       OUT      INTEGER
+) IS
+--CURSOR cur_cust IS SELECT ACT_NUM, ACT_TITLE,BALANCE FROM PLABON.CUSTOMER WHERE ACT_NUM = in_actnum AND ACT_TITLE = in_acttit;
+
+ BEGIN
+      BEGIN
+     UPDATE PLABON.CUSTOMER SET BALANCE = BALANCE +100 WHERE ACT_NUM = in_actnum AND ACT_TITLE = in_acttit;
+     IF SQL%FOUND THEN
+     out_code := 0;
+     ELSE out_code := 1;
+     END IF;
+     EXCEPTION WHEN OTHERS THEN
+     out_code :=2;
+     END;
+  END;
+END;
+```
