@@ -19,3 +19,25 @@
  @Query(value = "SELECT * FROM employee WHERE employee.id = :id AND employee.name LIKE %:name%",nativeQuery = true)
     Employee findByNameANDId(int id, String name);
 ```
+
+* procedure call
+
+```
+private final static String INCREMENT_BALANCE_PROCEDURE = "PLABON.PRACTICE_PK.dpr_increase_balance";
+
+    //for database connection
+    @Autowired
+    private EntityManager entityManager;
+    
+ StoredProcedureQuery query = this.entityManager.createStoredProcedureQuery(INCREMENT_BALANCE_PROCEDURE);
+         //in parameters
+        query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        // OUT params. 2nd param is the type of out variable
+        query.registerStoredProcedureParameter(3, Integer.class, ParameterMode.OUT);
+        query.setParameter(1, actnum);
+        query.setParameter(2, acttit);
+        int outputCode = (int) query.getOutputParameterValue(3);
+        System.out.println("out code "+outputCode);
+        return outputCode;
+```
