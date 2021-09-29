@@ -41,6 +41,22 @@ private final static String INCREMENT_BALANCE_PROCEDURE = "PLABON.PRACTICE_PK.dp
         System.out.println("out code "+outputCode);
         return outputCode;
 ```
+* Procedure call with alternate param names
+```
+   System.out.println("actnum "+ actnum);
+        System.out.println("acttit "+ acttit);
+        StoredProcedureQuery query = this.entityManager.createStoredProcedureQuery(INCREMENT_BALANCE_PROCEDURE);
+        //in parameters
+        query.registerStoredProcedureParameter("in_actnum", String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter("in_acttit", String.class, ParameterMode.IN);
+        // OUT params. 2nd param is the type of out variable
+        query.registerStoredProcedureParameter("out_code", Integer.class, ParameterMode.OUT);
+        query.setParameter("in_actnum", actnum);
+        query.setParameter("in_acttit", acttit);
+        int outputCode = (int) query.getOutputParameterValue("out_code");
+        System.out.println("out code "+outputCode);
+        return outputCode;
+```
 ### The procedure which was called
 ```
 CREATE OR REPLACE PACKAGE BODY PLABON.PRACTICE_PK
