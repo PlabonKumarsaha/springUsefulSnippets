@@ -22,7 +22,7 @@
 
 		<finalName>emp-web app</finalName>
 
-6. Then maven build the project (used STS)
+6. Then maven build the project (used STS) -> set goal as clean package
 
 7. Now copy the generted WAR file from target folder to tomcat's webapps
 
