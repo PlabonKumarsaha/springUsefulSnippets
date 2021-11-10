@@ -8,11 +8,13 @@
 	}
 
 3. add tomcat dependency
+		```
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		```
 
 4. add the packaing type form jar to war	
 
@@ -20,7 +22,7 @@
 
 5. Change war filr name in build from POM (optional)
 
-		<finalName>emp-web app</finalName>
+		`<finalName>emp-web app</finalName>`
 
 6. Then maven build the project (used STS) -> set goal as clean package
 
