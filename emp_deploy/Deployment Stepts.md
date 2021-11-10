@@ -8,13 +8,13 @@
 	}
 
 3. add tomcat dependency
-		```
+		``
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		```
+		``
 
 4. add the packaing type form jar to war	
 
