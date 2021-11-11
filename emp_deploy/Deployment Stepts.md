@@ -40,3 +40,5 @@ Here, after 8088/ it is the application name then to the URL
 
 Alterantely PC ip can also be used http://172.**.***.1:8088/emp-web%20app/api/v1/emp 
 
+Alternate instruction : https://www.youtube.com/watch?v=R-aFQkJIKEs&ab_channel=PixelTrice
+
