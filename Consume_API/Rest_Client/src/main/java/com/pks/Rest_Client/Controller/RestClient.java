@@ -3,6 +3,7 @@ package com.pks.Rest_Client.Controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pks.Rest_Client.Model.User;
+import org.apache.coyote.Response;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -44,7 +45,30 @@ public class RestClient {
         System.out.println("User email :"+user.getEmail());
     }
 
+    public void callCreateUser(User user) {
+        ResponseEntity<User>userResponse = restTemplate.postForEntity(CREATE_API_URL,user,User.class);
+        System.out.println(userResponse);
+        System.out.println("Only body from create response : "+userResponse.getBody());
+        System.out.println("Only email from create response : "+userResponse.getBody().getEmail());
+    }
 
-
+    public void callUpdateUser(User user,long id) {
+        Map<String,Long>param = new HashMap<>();
+        param.put("id",id);
+        User updated = new User();
+        updated.setEmail(user.getEmail());
+        updated.setFirstName(user.getFirstName());
+        updated.setLastName(user.getLastName());
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<User> requestEntity = new HttpEntity<User>(updated, headers);
+        ResponseEntity<User>userResponse= restTemplate.exchange(UPDATE_API_URL,HttpMethod.PUT,requestEntity,User.class,param);
+        System.out.println(userResponse.getBody());
+    }
+    public void callDeleteUser(long id) {
+        Map<String,Long>param = new HashMap<>();
+        param.put("id",id);
+        restTemplate.delete(DELETE_API_URL,param);
+    }
 
     }
