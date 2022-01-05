@@ -1,0 +1,30 @@
+		// dependeny
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20210307</version>
+		</dependency>
+	//code	
+String jsonData = "{\n" +
+				"\t\"findata\": {\n" +
+				"\t\t\"left Thumb\": \"l thumb\",\n" +
+				"\t\t\"left Index\": \"l index\",\n" +
+				"\t\t\"left Middle\": \"l mid\",\n" +
+				"\t\t\"left Ring\": \"l mid\",\n" +
+				"\t\t\"left Little\": \"l lit\",\n" +
+				"\t\t\"right Thumb\": \"r thumb\",\n" +
+				"\t\t\"right Index\": \"r index\",\n" +
+				"\t\t\"right Middle\": \"r mid\",\n" +
+				"\t\t\"right Ring\": \"r ring\",\n" +
+				"\t\t\"right Little\": \"r little\"\n" +
+				"\t},\n" +
+				"\t\"mfindata\": {\n" +
+				"\t\t\"findata\": \"mid fing \"\n" +
+				"\t}\n" +
+				"}";
+		System.out.println("jsonData : "+jsonData);
+		JSONObject decryptedObj = new JSONObject(jsonData);
+		System.out.println("decryptedObj : "+decryptedObj);
+		JSONObject fingerData = (JSONObject) decryptedObj.get("findata");
+		System.out.println("findata : "+fingerData);
+		System.out.println("left Index :"+fingerData.get("left Index"));
