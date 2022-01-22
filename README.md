@@ -85,3 +85,30 @@ PROCEDURE dpr_increase_balance (
 END;
 ```
 -- Added to convert nested json data
+
+```
+** TODO **
+AI Reception Robot
+AI Reception is a reception robot that can interact with users to satisfy their queries by delivering answers recognizing users' history. This robot has two parts- hardware and software. In the software section, web developer needs to care about building robust modules that can synchronize the total system and save the data into the webserver for further use.
+The total system has several modules: Person identification, Speaker Identification, Face Recognition, Speaker Recognition, Automatic Speech Recognition, Natural Language Processing, Text to Speech Synthesis, Datasets.
+All the modules are custom built and dependent on different environments, versions. Individual modules are built with python and more than 50+ libraries are used to make it robust. The web developer must take care of this issue to make the asynchronous system so that users can go through all the modules sequencing and save & fetch data from the webserver for future use.
+In a short rescription, initial the system will start by pressing the button on the tabs visual interference and simultaneously face recognition with activate. Then for further authorization speaker recognition with activated by recording 20s voice. If the person is not recognized his personal information will be saved.
+
+Furthermore, the system will take loopwise voice recording to process his query and give the exact answer by text to speech synthesis model. Users' data will be saved in the backend to use in the future.
+List of python models already prepared for the system:
+● Person identification,
+● Speaker Identification,
+● Face Recognition,
+● Speaker Recognition,
+● Automatic Speech Recognition,
+● Natural Language Processing,
+● Text to Speech Synthesis,
+● Datasets.
+Expected Work to be Done:
+▪ Synchronize all the models into one frame.
+▪ Flask/Django is preferred.
+▪ Multiple machine learning application hosting in server in sqlite/pysqlite.
+
+▪ Data should be saved in the webserver.
+View Khondaker A.’s profile
+```
