@@ -1,0 +1,3 @@
+- Create multiple webapps and log folder
+- GOTO conf >> server.xml and add services like mentioned in the Serv.xml file
+- Setting up a default path for a particular tomcat : https://stackoverflow.com/questions/14206003/default-application-in-tomcat
