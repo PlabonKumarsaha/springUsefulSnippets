@@ -1,6 +1,7 @@
 package com.era.privatepublic.key;
 
 import javax.crypto.Cipher;
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -34,21 +35,34 @@ public class RSA {
     }
 
     public String encrypt(String message) throws Exception{
+        byte[] encryptedBytes =null;
+        try{
         byte[] messageToBytes = message.getBytes();
-        Cipher cipher = Cipher.getInstance("RSA/CBC/PKCS1Padding");
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.ENCRYPT_MODE,publicKey);
-        byte[] encryptedBytes = cipher.doFinal(messageToBytes);
+         encryptedBytes = cipher.doFinal(messageToBytes);
+        return encode(encryptedBytes);}
+        catch (Exception e){
+            System.out.println("exception "+e);
+        }
         return encode(encryptedBytes);
     }
     private String encode(byte[] data){
         return Base64.getEncoder().encodeToString(data);
     }
 
-    public String decrypt(String encryptedMessage) throws Exception{
-        byte[] encryptedBytes = decode(encryptedMessage);
-        Cipher cipher = Cipher.getInstance("RSA/CBC/PKCS1Padding");
-        cipher.init(Cipher.DECRYPT_MODE,privateKey);
-        byte[] decryptedMessage = cipher.doFinal(encryptedBytes);
+    public String decrypt(String encryptedMessage) throws UnsupportedEncodingException {
+        byte[] decryptedMessage =null;
+        try{
+            byte[] encryptedBytes = decode(encryptedMessage);
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            cipher.init(Cipher.DECRYPT_MODE,privateKey);
+            decryptedMessage = cipher.doFinal(encryptedBytes);
+        }
+        catch (Exception e){
+            System.out.println("excep : "+e);
+        }
+
         return new String(decryptedMessage,"UTF8");
     }
     private byte[] decode(String data){
