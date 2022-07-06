@@ -1,0 +1,26 @@
+1. register and verify : https://console.twilio.com/?frameUrl=%2Fconsole%3Fx-target-region%3Dus1&newCustomer=true
+2. Must use Ac SID and auth token
+3. take a trial phone number : as
+
+sid : psas
+token : sa
+
+
+4.dependencies : Spring reactive web
+
+sdk : <dependency>
+  <groupId>com.twilio.sdk</groupId>
+  <artifactId>twilio</artifactId>
+  <version>8.32.0</version>
+</dependency>
+
+
+5.add in properties file 
+
+twilio.account_sid=AC4740****************
+twilio.auth_token=af2359*****************
+twilio.trial_number=+185*****************
+
+6. add in config files the sid,token and trial number
+
+7.
