@@ -28,6 +28,7 @@ public class ProductRepository {
     }
 
     public Product findProductById(int id){
+        System.out.println("call from db");
         return (Product) template.opsForHash().get(HASH_KEY,id);
     }
 
