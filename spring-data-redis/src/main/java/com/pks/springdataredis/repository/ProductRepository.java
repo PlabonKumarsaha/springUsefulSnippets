@@ -2,12 +2,14 @@ package com.pks.springdataredis.repository;
 
 import com.pks.springdataredis.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@Configuration
 public class ProductRepository {
 
     // has key was mentioned in entity class
