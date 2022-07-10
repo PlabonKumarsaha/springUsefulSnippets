@@ -1,0 +1,22 @@
+Purpose of redis is to reduce conncection to database for every details
+1. run the redis server(zip file) : https://github.com/microsoftarchive/redis/releases/tag/win-3.2.100 
+2. after that redis server shall be running on 6379 port.
+3. dependency : spring data redis(access+driver), redis client dependency :
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+4.add a config for the reids
+
+5. use RedisHash annotation on the entity class and the class must be serializable 
+
+6. rest can be used like usual
+
+
+7 . use annotations such as @EnableCaching in class level to start the caching and 
+
+ use annoatations like on the method level:   @Cacheable(key = "#id",value = HASH_KEY,unless = "#result.price > 1000").
+unless is used to set the condition when caching will happen and when not
