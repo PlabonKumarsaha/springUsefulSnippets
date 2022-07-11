@@ -1,0 +1,8 @@
+1. download otp_win64_22 version from : http://erlang.org/download/
+
+
+2. dependency : spring for  rabbiitmq
+
+3. dothe configs
+
+4. create publisher consumer modelll
