@@ -114,3 +114,4 @@ View Khondaker A.’s profile
 ```
 * Add the Jenkins config
 Data paritioning : https://www.javacodegeeks.com/2020/08/adding-partition-to-existing-table-in-oracle.html
+https://www.youtube.com/watch?v=m3q4lrE671Y&list=PLUWdEQb_2yqX9rJ9CtahlZvo0AD3A63JA
