@@ -113,3 +113,4 @@ Expected Work to be Done:
 View Khondaker A.’s profile
 ```
 * Add the Jenkins config
+Data paritioning : https://www.javacodegeeks.com/2020/08/adding-partition-to-existing-table-in-oracle.html
