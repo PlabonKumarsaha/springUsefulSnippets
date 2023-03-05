@@ -112,7 +112,6 @@ Expected Work to be Done:
 ▪ Synchronize all the models into one frame.
 ▪ Flask/Django is preferred.
 ▪ Multiple machine learning application hosting in server in sqlite/pysqlite.
-
 ▪ Data should be saved in the webserver.
 View Khondaker A.’s profile
 ```
