@@ -10,7 +10,7 @@ public class OptionalDemo {
 
 
     public static Customer getCustomerByEmailId(String email) throws Exception {
-        List<Customer> customers = EkartDataBase.getAll();
+        List<Customer> customers = FakeDataBase.getAll();
        return customers.stream()
                 .filter(customer -> customer.getEmail().equals(email))
                 .findAny().orElseThrow(()->new Exception("no customer present with this email id"));
